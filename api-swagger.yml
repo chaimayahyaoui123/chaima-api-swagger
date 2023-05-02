@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Repo API
+  description: API pour gérer une liste de repo
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /repo:
+    get:
+      summary: Récupérer la liste de tous les repo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Repo'
+components:
+  schemas:
+    Repo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nom:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
