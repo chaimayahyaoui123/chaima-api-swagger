@@ -1,0 +1,177 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Exemple API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/CloudRepository/api/apiCloud/CreateRepo": {
+      "post": {
+        "summary": "Créer un référentiel",
+        "description": "Crée un nouveau référentiel en utilisant les paramètres spécifiés.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Type d'événement"
+                      },
+                      "implementation": {
+                        "type": "string",
+                        "description": "Implémentation"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Nom du référentiel"
+                      }
+                    },
+                    "required": ["type", "implementation", "name"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Succès - Référentiel créé"
+          }
+        },
+        "tags": ["Référentiels"]
+      }
+    },
+    "/CloudRepository/api/apiCloud/createBackup": {
+      "post": {
+        "summary": "Créer une sauvegarde",
+        "description": "Crée une nouvelle sauvegarde en utilisant les paramètres spécifiés.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Type d'événement"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Nom du référentiel"
+                      },
+                      "path": {
+                        "type": "string",
+                        "description": "Chemin de sauvegarde"
+                      }
+                    },
+                    "required": ["type", "name", "path"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Succès - Sauvegarde créée"
+          }
+        },
+        "tags": ["Sauvegardes"]
+      }
+    },
+    "/CloudRepository/api/apiCloud/clearRepo": {
+      "post": {
+        "summary": "Effacer un référentiel",
+        "description": "Efface un référentiel en utilisant les paramètres spécifiés.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Type d'événement"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Nom du référentiel"
+                      },
+                      "keepSource": {
+                        "type": "boolean",
+                        "description": "Indicateur de conservation des sources"
+                      }
+                    },
+                    "required": ["type", "name", "keepSource"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Succès - Référentiel effacé"
+          }
+        },
+        "tags": ["Référentiels"]
+      }
+    },
+    "/CloudRepository/api/apiCloud/restoreBackup": {
+      "post": {
+        "summary": "Restaurer une sauvegarde",
+        "description": "Restaure une sauvegarde en utilisant les paramètres spécifiés.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Type d'événement"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Nom du référentiel"
+                      },
+                      "path": {
+                        "type": "string",
+                        "description": "Chemin de sauvegarde"
+                      }
+                    },
+                    "required": ["type", "name", "path"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Succès - Sauvegarde restaurée"
+          }
+        },
+        "tags": ["Sauvegardes"]
+      }
+    }
+  }
+}
